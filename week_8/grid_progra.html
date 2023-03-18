@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Styles programmatically</title>
+    <style>
+        .on {
+            background-color: orange;
+        }
+        div {
+            padding: 50px;
+            text-align: center;
+            border-style: solid;
+            font-size: 2em;
+        }
+    </style>
+</head>
+<body>
+    <button onclick="start()">On</button>
+    <button onclick="off()">Off</button>
+    <div id="target">Div a manipular</div>
+    <script>
+        const element = document.getElementById("target")
+        let timer = 0;
+
+        function toggle () {
+            element.classList.toggle('on');
+        }
+
+
+        // function on() {
+        //     // The Element.classList is a read-only property that returns a live DOMTokenList collection of the class attributes of the element
+        //     element.classList.add("on")
+        // }
+
+        function off() {
+            console.log("Clearing interval...")
+            clearInterval(timer);
+        }
+
+        function start() {
+            timer = setInterval(() => {
+                toggle();
+                console.log(element.outerHTML)
+            }, 1000);
+        }
+            
+
+    </script>
+</body>
+</html>
